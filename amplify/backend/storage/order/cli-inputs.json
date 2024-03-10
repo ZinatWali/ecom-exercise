@@ -1,0 +1,14 @@
+{
+  "resourceName": "order",
+  "tableName": "order",
+  "partitionKey": {
+    "fieldName": "orderId",
+    "fieldType": "number"
+  },
+  "sortKey": {
+    "fieldName": "productId",
+    "fieldType": "number"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}
