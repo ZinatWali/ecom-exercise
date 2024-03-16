@@ -3,7 +3,7 @@
   "paths": {
     "/create": {
       "name": "/create",
-      "lambdaFunction": "orderLambda",
+      "lambdaFunction": "order",
       "permissions": {
         "setting": "private",
         "auth": [

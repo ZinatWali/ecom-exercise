@@ -8,7 +8,7 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "orderLambda"
+          "resourceName": "order"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -22,7 +22,7 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "productsLambda"
+          "resourceName": "products"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -58,41 +58,13 @@
     }
   },
   "function": {
-    "orderLambda": {
+    "order": {
       "build": true,
-      "dependsOn": [
-        {
-          "attributeEnvMap": {
-            "Arn": "TABLE_ARN",
-            "Name": "TABLE_NAME"
-          },
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "storage",
-          "resourceName": "order"
-        }
-      ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
-    "productsLambda": {
+    "products": {
       "build": true,
-      "dependsOn": [
-        {
-          "attributeEnvMap": {
-            "Arn": "TABLE_ARN",
-            "Name": "TABLE_NAME"
-          },
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "storage",
-          "resourceName": "Products"
-        }
-      ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }
@@ -105,35 +77,35 @@
     }
   },
   "parameters": {
-    "AMPLIFY_function_orderLambda_deploymentBucketName": {
+    "AMPLIFY_function_order_deploymentBucketName": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "orderLambda"
+          "resourceName": "order"
         }
       ]
     },
-    "AMPLIFY_function_orderLambda_s3Key": {
+    "AMPLIFY_function_order_s3Key": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "orderLambda"
+          "resourceName": "order"
         }
       ]
     },
-    "AMPLIFY_function_productsLambda_deploymentBucketName": {
+    "AMPLIFY_function_products_deploymentBucketName": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "productsLambda"
+          "resourceName": "products"
         }
       ]
     },
-    "AMPLIFY_function_productsLambda_s3Key": {
+    "AMPLIFY_function_products_s3Key": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "productsLambda"
+          "resourceName": "products"
         }
       ]
     },

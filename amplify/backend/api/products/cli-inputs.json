@@ -3,7 +3,7 @@
   "paths": {
     "/products": {
       "name": "/products",
-      "lambdaFunction": "productsLambda",
+      "lambdaFunction": "products",
       "permissions": {
         "setting": "private",
         "auth": [

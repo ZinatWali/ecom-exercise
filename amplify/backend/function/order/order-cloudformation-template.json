@@ -15,14 +15,6 @@
     },
     "s3Key": {
       "Type": "String"
-    },
-    "storageProductsName": {
-      "Type": "String",
-      "Default": "storageProductsName"
-    },
-    "storageProductsArn": {
-      "Type": "String",
-      "Default": "storageProductsArn"
     }
   },
   "Conditions": {
@@ -55,12 +47,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "productsLambda",
+            "order",
             {
               "Fn::Join": [
                 "",
                 [
-                  "productsLambda",
+                  "order",
                   "-",
                   {
                     "Ref": "env"
@@ -86,7 +78,7 @@
             "Arn"
           ]
         },
-        "Runtime": "nodejs18.x",
+        "Runtime": "python3.8",
         "Layers": [],
         "Timeout": 25
       }
@@ -97,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "brittestLambdaRole88d640de",
+            "brittestLambdaRoled8288cfe",
             {
               "Fn::Join": [
                 "",
                 [
-                  "brittestLambdaRole88d640de",
+                  "brittestLambdaRoled8288cfe",
                   "-",
                   {
                     "Ref": "env"
@@ -172,30 +164,24 @@
             {
               "Effect": "Allow",
               "Action": [
-                "dynamodb:DescribeTable",
-                "dynamodb:GetItem",
-                "dynamodb:Query",
-                "dynamodb:Scan",
-                "dynamodb:PutItem",
-                "dynamodb:UpdateItem",
-                "dynamodb:DeleteItem"
+                "dynamodb:PutItem"
               ],
-              "Resource": [
-                {
-                  "Ref": "storageProductsArn"
-                },
-                {
-                  "Fn::Join": [
-                    "/",
-                    [
-                      {
-                        "Ref": "storageProductsArn"
-                      },
-                      "index/*"
-                    ]
-                  ]
-                }
-              ]
+              "Resource": {
+                "Fn::Sub": [
+                  "arn:aws:dynamodb:${region}:${account}:table/order-${env}",
+                  {
+                    "region": {
+                      "Ref": "AWS::Region"
+                    },
+                    "account": {
+                      "Ref": "AWS::AccountId"
+                    },
+                    "env": {
+                      "Ref": "env"
+                    }
+                  }
+                ]
+              }
             }
           ]
         }

@@ -23,14 +23,14 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "function": {
-    "orderLambda": {
+    "order": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
       "LambdaExecutionRoleArn": "string",
       "Name": "string",
       "Region": "string"
     },
-    "productsLambda": {
+    "products": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
       "LambdaExecutionRoleArn": "string",
